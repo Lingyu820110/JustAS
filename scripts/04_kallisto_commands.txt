@@ -1,0 +1,13 @@
+# ============================================================
+# Step 4: kallisto index and quantification
+# Replace FASTQ paths with your own; run from the JustAS_release/ directory.
+# ============================================================
+
+# Build index (k = 25)
+kallisto index -i results/justAS_k25.idx -k 25 results/justAS_junctions.fa
+
+# Quantify each sample (non-strand-specific mode; do NOT add --rf-stranded)
+kallisto quant -i results/justAS_k25.idx -o results/quant/LD1 -t 8 R1_LD1.fastq.gz R2_LD1.fastq.gz
+kallisto quant -i results/justAS_k25.idx -o results/quant/LD2 -t 8 R1_LD2.fastq.gz R2_LD2.fastq.gz
+kallisto quant -i results/justAS_k25.idx -o results/quant/D1  -t 8 R1_D1.fastq.gz  R2_D1.fastq.gz
+kallisto quant -i results/justAS_k25.idx -o results/quant/D2  -t 8 R1_D2.fastq.gz  R2_D2.fastq.gz
